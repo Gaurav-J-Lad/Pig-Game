@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>🐷 Pig Game</title>
+  </head>
+  <body>
+    <!-- Game Title -->
+    <header class="game-header">
+      <h1 class="game-title">🐷 Pig Dice Game (Roll for Glory)</h1>
+      <p class="game-subtitle">First to 100 points wins!</p>
+    </header>
+
+    <!-- Game Board -->
+    <main>
+      <!-- Player 1 -->
+      <section class="player player--0 player--active">
+        <h2 class="name" id="name--0">Player 1</h2>
+        <p class="score" id="score--0">0</p>
+        <div class="current">
+          <p class="current-label">Current</p>
+          <p class="current-score" id="current--0">0</p>
+        </div>
+      </section>
+
+      <!-- Player 2 -->
+      <section class="player player--1">
+        <h2 class="name" id="name--1">Player 2</h2>
+        <p class="score" id="score--1">0</p>
+        <div class="current">
+          <p class="current-label">Current</p>
+          <p class="current-score" id="current--1">0</p>
+        </div>
+      </section>
+
+      <!-- Player 3 -->
+      <section class="player player--2">
+        <h2 class="name" id="name--2">Player 3</h2>
+        <p class="score" id="score--2">0</p>
+        <div class="current">
+          <p class="current-label">Current</p>
+          <p class="current-score" id="current--2">0</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Dice and buttons area -->
+    <div class="controls">
+      <img src="dice-5.png" alt="Playing dice" class="dice hidden" />
+      <div class="btn-group">
+        <button class="btn btn--new">🔄 New game</button>
+        <button class="btn btn--roll">🎲 Roll dice</button>
+        <button class="btn btn--hold">📥 Hold</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

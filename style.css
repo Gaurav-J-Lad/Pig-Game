@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  color: #eee;
+  background-image: linear-gradient(
+    to top left,
+    #0f2027,
+    #203a43,
+    #2c5364
+  ); /* 🌌 Dark galaxy */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+
+  overflow-y: auto; /* ✅ vertical scroll */
+  overflow-x: hidden; /* ✅ prevent sideways scroll */
+}
+
+/* GAME HEADER */
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-title {
+  font-size: 5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.6);
+}
+
+.game-subtitle {
+  font-size: 2rem;
+  color: #cfd9df;
+  font-weight: 300;
+}
+
+/* LAYOUT */
+main {
+  position: relative;
+  width: 140rem; /* wider for 3 players */
+  min-height: 50rem;
+  background-color: rgba(20, 20, 35, 0.5); /* deep bluish overlay */
+  backdrop-filter: blur(200px);
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.4);
+  border-radius: 9px;
+  display: flex;
+  margin-bottom: 3rem;
+
+  overflow-y: auto; /* ✅ scroll if players overflow */
+  overflow-x: hidden;
+}
+
+.player {
+  flex: 1;
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+}
+
+/* ELEMENTS */
+.name {
+  position: relative;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.score {
+  font-size: 8rem;
+  font-weight: 300;
+  color: #7f5af0; /* Neon purple */
+  margin-bottom: auto;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.player--active .name {
+  font-weight: 700;
+  color: #e0eaff; /* light glow */
+}
+.player--active .score {
+  font-weight: 400;
+}
+
+.player--active .current {
+  opacity: 1;
+}
+
+.current {
+  background: linear-gradient(135deg, #5f0a87, #a4508b);
+  opacity: 0.9;
+  border-radius: 9px;
+  color: #fff;
+  width: 65%;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.75s;
+}
+
+.current-label {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: #ddd;
+}
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+/* CONTROLS SECTION */
+.controls {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dice {
+  height: 10rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  border: 2px solid #7f5af0; /* purple glow */
+}
+
+.btn-group {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  color: #fff;
+  border: none;
+  font-family: inherit;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  padding: 0.7rem 2.5rem;
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+}
+
+.btn::first-letter {
+  font-size: 2.4rem;
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #5f0a87, #a4508b);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* WINNER */
+.player--winner {
+  background-color: rgba(127, 90, 240, 0.1);
+}
+.player--winner .name {
+  font-weight: 700;
+  color: #ff6f61;
+}
+
+/* UTILITIES */
+.hidden {
+  display: none;
+}
+
+/* ========================= */
+/* RESPONSIVE DESIGN */
+/* ========================= */
+
+/* Large Tablets */
+@media (max-width: 1200px) {
+  main {
+    width: 110rem;
+  }
+  .score {
+    font-size: 6rem;
+  }
+  .name {
+    font-size: 3rem;
+  }
+  .current {
+    width: 70%;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  main {
+    width: 90%;
+    flex-direction: column;
+    height: auto;
+  }
+  .player {
+    padding: 3rem;
+    width: 100%;
+  }
+  .score {
+    font-size: 5rem;
+  }
+  .dice {
+    height: 8rem;
+  }
+  .btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  .game-title {
+    font-size: 3rem;
+  }
+  .game-subtitle {
+    font-size: 1.4rem;
+  }
+  main {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+  .player {
+    padding: 2rem;
+  }
+  .score {
+    font-size: 3.5rem;
+  }
+  .name {
+    font-size: 2.2rem;
+  }
+  .current {
+    width: 90%;
+    padding: 1.2rem;
+  }
+  .current-score {
+    font-size: 2.5rem;
+  }
+  .dice {
+    height: 6.5rem;
+  }
+  .btn {
+    font-size: 1.4rem;
+    padding: 0.5rem 1.6rem;
+  }
+  .btn-group {
+    gap: 1rem;
+  }
+}
